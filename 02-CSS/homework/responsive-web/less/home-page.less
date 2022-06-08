@@ -13,7 +13,11 @@
     }
 
   }
-
+  .imgHeader{
+    border-radius: 20px;
+    height: 100%;
+    margin: 10px;
+  }
   .music-images {
     display: flex;
     flex-wrap: wrap;
@@ -57,8 +61,8 @@
         margin-bottom: 26px;
       }
 
-      .btn {
-      }
+     // .btn {
+     // }
     }
 
     .actual-img {
@@ -69,6 +73,33 @@
         width: 100%;
         height: auto;
         border-radius: 10px;
+      }
+    }
+  }
+  @media (max-width:@phone){
+    .imgHeader {
+      width: 96%;
+    }
+    .tecnologia{
+      display: none;
+    }
+    .ondas {
+      display: none;
+    }
+    .music-images img{
+      width: 96%;
+    }
+    .actual{
+      padding: 0;
+      flex-direction: column-reverse;
+      .actual-img{
+        width: 100%;
+        margin:  0%;
+        padding: 2.5%;
+      }
+      .actual-text{
+        width: 100%;
+        padding: 2.5%;
       }
     }
   }

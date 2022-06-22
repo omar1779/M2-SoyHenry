@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
+/* import { Link } from 'react-router-dom'; */
 import './Buscador.css';
+import { addMovieFavorite , getMovies } from "../../actions";
 
 
 
@@ -11,12 +12,14 @@ export class Buscador extends Component {
     this.state = {
       title: ""
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     this.setState({ title: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
+    this.props.getMovies(this.state.title);
   }
 
   render() {
@@ -44,5 +47,21 @@ export class Buscador extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    movies: state.moviesLoaded
+  };
+}
 
-export default Buscador;
+function mapDispatchToProps(dispatch) {
+  return {
+    addMovieFavorite: movie => dispatch(addMovieFavorite(movie)),
+    getMovies: title => dispatch(getMovies(title))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Buscador);
+

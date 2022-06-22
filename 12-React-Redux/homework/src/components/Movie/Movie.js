@@ -11,7 +11,7 @@ class Movie extends React.Component {
     render() {
         return (
             <div className="movie-detail">
-                Detalle de la pelicula  
+                Detalle de la pelicula
             </div>
         );
     }

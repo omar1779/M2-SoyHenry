@@ -1,11 +1,14 @@
 import React from 'react';
 import './Cards.css';
-
+import { useSelector } from 'react-redux';
 import Card from './Card.jsx';
 
-export default function Cards({cities, onClose}) {
+export default function Cards({ onClose}) {
+  const cities = useSelector((state) => state.allClima)
+  console.log(cities,"useSelector")
   return (
-    <div className='cards'>
+    <>{cities.length !==0 ?
+      <div className='cards'>
       {cities.map(c => <Card
           key={c.id}
           max={c.max}
@@ -15,6 +18,11 @@ export default function Cards({cities, onClose}) {
           id={c.id}
           onClose={() => onClose(c.id)}
         /> )}
-    </div>
+      </div>
+    : <div>
+        <h1>Bienvenido al ClimApp , para buscar una ciudad o paise , utiliza el buscador :)</h1>
+      </div>
+    }
+      </>
   );
 }
